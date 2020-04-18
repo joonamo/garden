@@ -44,7 +44,7 @@ export class Scores {
 
 export type gardenState = number[][]
 
-export const gardenSize = 20
+export const gardenSize = 15
 export const simulationLength = 30
 class GardenViewModel {
   @observable public garden: number[][] = [[]]

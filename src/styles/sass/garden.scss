@@ -1,4 +1,4 @@
-$gardenSize: 20;
+$gardenSize: 15;
 
 .garden {
   display: grid;
@@ -33,15 +33,18 @@ $gardenSize: 20;
 }
 
 .flower-1 {
-  background-color: rgb(216, 87, 162);
+  background-image: url("/assets/flower-1.png");
+  background-size: contain;
 }
 
 .flower-2 {
-  background-color: rgb(252, 202, 95);
+  background-image: url("/assets/flower-2.png");
+  background-size: contain;
 }
 
 .flower-3 {
-  background-color: rgb(92, 176, 245);
+  background-image: url("/assets/flower-3.png");
+  background-size: contain;
 }
 
 .withering {
