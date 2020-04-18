@@ -13,7 +13,7 @@ class App extends React.Component {
       <section className="section">
         <div className="container">
           <div >
-            <h1 className="title is-1"> Convay&#39;s Garden of Life </h1>
+            <h1 className="title is-1"> Convay&#39;s Garden Life </h1>
             <div className="columns box is-paddingless">
               <div className="column has-background-info">
                 <Tools />
