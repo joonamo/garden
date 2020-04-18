@@ -2,6 +2,7 @@ import { observer } from 'mobx-react'
 import * as React from 'react'
 import { appViewModel } from './AppViewModel'
 import { Garden } from './Garden'
+import { gardenViewModel } from './GardenViewModel'
 
 @observer
 class App extends React.Component {
@@ -13,6 +14,7 @@ class App extends React.Component {
             <h1> Garden of Life </h1>
             <p>Score: {appViewModel.score}</p>
             <Garden />
+            <button type="button" onClick={gardenViewModel.simulate}>simulate!</button> 
           </div>
         </div>
       </section>

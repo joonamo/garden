@@ -3,6 +3,8 @@ import { observer } from 'mobx-react'
 import * as React from 'react'
 import { gardenViewModel } from './GardenViewModel'
 import './styles/sass/garden.scss'
+import classNames from 'classnames'
+// import { countNeighbors } from './GameOfLife'
 
 export const Garden = observer(() => {
   return <div className="garden">
@@ -20,9 +22,15 @@ const GardenRow = observer((props: { row: number }) => {
 })
 const GardenTile = observer((props: { row: number, col: number }) => {
   const { row, col } = props
+  const currentValue = gardenViewModel.garden[row][col]
+  const clickHandler = () => gardenViewModel.setTile(row, col, 1 - currentValue)
   return <div className="garden-tile">
-    <div className="garden-tile-content">
-      {gardenViewModel.garden[row][col]}
+    <div
+      className={
+        classNames('garden-tile-content', currentValue > 0 ? `flower-${currentValue}` : null)
+      }
+      onClick={clickHandler}>
+      {/* {`${countNeighbors(gardenViewModel.garden, row, col)}`} */}
     </div>
   </div>
 })

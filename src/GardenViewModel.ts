@@ -1,4 +1,5 @@
 import { observable, action } from 'mobx'
+import { simulate } from './GameOfLife'
 
 export const gardenSize = 20
 class GardenViewModel {
@@ -13,7 +14,16 @@ class GardenViewModel {
   @action
   public resetGarden = () => {
     this.garden = this.helpfulArray.map(() => new Array<number>(gardenSize).fill(0))
-    console.log(JSON.parse(JSON.stringify(this.garden)))
+  }
+
+  @action
+  public setTile = (row: number, col: number, val: number) => {
+    this.garden[row][col] = val
+  }
+
+  @action
+  public simulate = () => {
+    this.garden = simulate(this.garden)
   }
 }
 
