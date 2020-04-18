@@ -1,0 +1,37 @@
+$gardenSize: 20;
+
+.garden {
+  display: grid;
+
+  grid-template-columns: repeat($gardenSize, 1fr);
+}
+
+.garden-row {
+
+}
+
+.garden-tile {
+  border: 1px;
+  border-style: solid;
+  border-color: black;
+  position: relative;
+}
+
+.garden-tile:before{
+  content: ' ';
+  display: block;
+  width: 100%;
+  padding-top: 100%;
+}
+
+.garden-tile-content {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+}
+
+.flower-1 {
+  background-color: black;
+}
