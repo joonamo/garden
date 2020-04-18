@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as React from 'react'
-import { gardenViewModel } from './GardenViewModel'
+import { gardenViewModel, thisOrPrevious } from './GardenViewModel'
 import './styles/sass/garden.scss'
 import classNames from 'classnames'
 // import { countNeighbors } from './GameOfLife'
@@ -23,7 +23,11 @@ const GardenRow = observer((props: { row: number }) => {
 })
 const GardenTile = observer((props: { row: number, col: number }) => {
   const { row, col } = props
-  const currentValue = gardenViewModel.garden[row][col]
+  const { value, isPrev } = thisOrPrevious(
+    gardenViewModel.garden,
+    gardenViewModel.previousGarden,
+    row,
+    col)
   const clickHandler = () => {
     gardenViewModel.startPlanting()
     gardenViewModel.setTile(row, col)
@@ -37,7 +41,11 @@ const GardenTile = observer((props: { row: number, col: number }) => {
   return <div className="garden-tile">
     <div
       className={
-        classNames('garden-tile-content', currentValue > 0 ? `flower-${currentValue}` : null)
+        classNames(
+          'garden-tile-content',
+          value > 0 ? `flower-${value}` : null,
+          isPrev ? 'withering' : null,
+        )
       }
       onMouseDown={clickHandler}
       onMouseEnter={enterHandler}

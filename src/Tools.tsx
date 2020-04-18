@@ -5,7 +5,8 @@ import { gardenViewModel } from './GardenViewModel'
 
 export const Tools = observer(() => {
   return <>
-    <button type="button" onClick={gardenViewModel.simulate}>simulate!</button> 
+    <button type="button" onClick={gardenViewModel.simulate}>step</button>
+    <button type="button" onClick={gardenViewModel.startSimulation}>READY</button> 
     <FlowerSelector flower={1} key={`flower-selector-${1}`} />
     <FlowerSelector flower={2} key={`flower-selector-${2}`} />
     <FlowerSelector flower={3} key={`flower-selector-${3}`} />

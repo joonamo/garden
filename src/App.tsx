@@ -1,8 +1,8 @@
 import { observer } from 'mobx-react'
 import * as React from 'react'
-import { appViewModel } from './AppViewModel'
 import { Garden } from './Garden'
 import { Tools } from './Tools'
+import { gardenViewModel } from './GardenViewModel'
 
 @observer
 class App extends React.Component {
@@ -12,7 +12,8 @@ class App extends React.Component {
         <div className="container">
           <div>
             <h1> Garden of Life </h1>
-            <p>Score: {appViewModel.score}</p>
+            <p>Score: {JSON.stringify(gardenViewModel.scores)}</p>
+            <p>Day: {gardenViewModel.day}</p>
             <Tools/>
             <Garden />
           </div>
