@@ -6,7 +6,7 @@ import { appViewModel } from './AppViewModel'
 
 export const gardenSize = 15
 export const startMonth = 5
-export const lastMonth = '8'
+export const lastMonth = '9'
 export type GardenState = number[][]
 export type GameState = 'Planning' | 'Simulating' | 'GameOver' | 'Replay'
 
