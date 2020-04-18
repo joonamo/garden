@@ -1,5 +1,10 @@
 import { observable, action } from 'mobx'
 import { simulate } from './GameOfLife'
+import moment, { Moment } from 'moment'
+
+export const gardenSize = 15
+export const startMonth = 4
+export const lastMonth = 8
 
 export const thisOrPrevious =
   (state: gardenState, prevState: gardenState, row: number, col: number) => {
@@ -38,14 +43,27 @@ export class Scores {
     this['1'] = scores[1]
     this['2'] = scores[2]
     this['3'] = scores[3]
-    this.frame = (scores[1] || 1) * (scores[2] || 1) * (scores[3] || 1)
+    this.frame = Math.round(Math.log10((scores[1] || 1) * (scores[2] || 1) * (scores[3] || 1)))
+  }
+}
+
+export class Inventory {
+  @observable '1' = 0
+  @observable '2' = 0
+  @observable '3' = 0
+
+  public useFlower = (flower: number) => {
+    const strFlower = String(flower)
+    if (this[strFlower] > 0) {
+      this[strFlower]--
+      return true
+    }
+    return false
   }
 }
 
 export type gardenState = number[][]
 
-export const gardenSize = 15
-export const simulationLength = 30
 class GardenViewModel {
   @observable public garden: number[][] = [[]]
   @observable public previousGarden: number[][] = [[]]
@@ -53,8 +71,10 @@ class GardenViewModel {
   @observable public selectedFlower = 1
   @observable public isPlanting = false
   @observable public scores = new Scores()
-  @observable public day = 0
+  public day: Moment = moment()
+  @observable public dayString = ''
   @observable public interactive = true
+  public inventory = new Inventory()
 
   constructor() {
     this.helpfulArray = new Array(gardenSize).map((_, i) => i)
@@ -62,16 +82,27 @@ class GardenViewModel {
   }
 
   @action
+  public setDate = (date: moment.MomentInput) => {
+    this.day = moment(date)
+    this.dayString = this.day.format('dddd MMMM Do')
+  }
+
+  @action
   public resetGarden = () => {
     this.garden = this.helpfulArray.map(() => new Array<number>(gardenSize).fill(0))
     this.previousGarden = this.helpfulArray.map(() => new Array<number>(gardenSize).fill(0))
     this.scores = new Scores()
-    this.day = 0
+    this.setDate(moment().set('month', startMonth).startOf('month'))
+    this.inventory['1'] = 20
+    this.inventory['2'] = 20
+    this.inventory['3'] = 20
   }
 
   @action
   public setTile = (row: number, col: number) => {
-    if (this.interactive) {
+    const isOk = this.interactive &&
+      (this.selectedFlower === 0 || this.inventory.useFlower(this.selectedFlower))
+    if (isOk) {
       this.garden[row][col] = this.selectedFlower
       this.scores.updateFrame(this.garden, this.previousGarden)
     }
@@ -81,7 +112,7 @@ class GardenViewModel {
     this.interactive = false
     this.stopPlanting()
     this.simulate()
-    if (this.day % simulationLength !== 0) {
+    if (this.day.format('D') !== '1') {
       window.setTimeout(this.startSimulation, 300)
     } else {
       this.interactive = true
@@ -90,7 +121,7 @@ class GardenViewModel {
 
   @action
   public simulate = () => {
-    this.day++
+    this.setDate(this.day.add(1, 'day'))
     this.scores.applyFrame()
     this.previousGarden = this.garden
     this.garden = simulate(JSON.parse(JSON.stringify(this.garden)))

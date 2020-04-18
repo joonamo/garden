@@ -4,6 +4,7 @@ $gardenSize: 15;
   display: grid;
 
   grid-template-columns: repeat($gardenSize, 1fr);
+  margin: 5px;
 }
 
 .garden-row {

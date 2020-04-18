@@ -4,8 +4,6 @@ import * as React from 'react'
 import { gardenViewModel, thisOrPrevious } from './GardenViewModel'
 import './styles/sass/garden.scss'
 import classNames from 'classnames'
-// import { countNeighbors } from './GameOfLife'
-// import { countNeighbors } from './GameOfLife'
 
 export const Garden = observer(() => {
   return <div className="garden">
