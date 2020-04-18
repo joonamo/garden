@@ -5,6 +5,7 @@ import { Tools } from './Tools'
 import { Calendar } from './Calendar'
 import { Score } from './Score'
 import { BottomRow } from './BottomRow'
+import { ScoreBoard } from './ScoreBoard'
 
 @observer
 class App extends React.Component {
@@ -20,20 +21,14 @@ class App extends React.Component {
               </div>
 
               <div className="column has-background-light is-three-fifths">
-                <div className="columns">
-                  <div className="column">
-                    <Calendar />
-                  </div>
-                  <div className="column has-text-right">
-                    <Score />
-                  </div>
-                </div>
+                <Score />
                 <Garden />
+                <Calendar />
                 <BottomRow />
               </div>
 
               <div className="column has-background-success">
-                <h3 className="title is-3"> Highscores </h3>
+                <ScoreBoard />
               </div>
             </div>
           </div>

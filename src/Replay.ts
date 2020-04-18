@@ -1,5 +1,7 @@
 import { GardenState, Inventory } from './GardenViewModel'
 
+export type serializedReplay = number[][][]
+
 export class ReplayEntry {
   data: number[][] = []
 
@@ -18,3 +20,11 @@ export class ReplayEntry {
   }
 }
 
+export const serializeReplay = (data: ReplayEntry[]): serializedReplay =>
+  data.map(entry => entry.data)
+export const deserializeReplay = (data: serializedReplay): ReplayEntry[] =>
+  data.map(entry => {
+    const o = new ReplayEntry()
+    o.data = entry
+    return o
+  })
