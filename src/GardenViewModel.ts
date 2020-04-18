@@ -5,6 +5,8 @@ export const gardenSize = 20
 class GardenViewModel {
   @observable public garden: number[][] = [[]]
   @observable public helpfulArray: number[] = []
+  @observable public selectedFlower = 1
+  @observable public isPlanting = false
 
   constructor() {
     this.helpfulArray = new Array(gardenSize).map((_, i) => i)
@@ -17,14 +19,30 @@ class GardenViewModel {
   }
 
   @action
-  public setTile = (row: number, col: number, val: number) => {
-    this.garden[row][col] = val
+  public setTile = (row: number, col: number) => {
+    this.garden[row][col] = this.selectedFlower
   }
 
   @action
   public simulate = () => {
-    this.garden = simulate(this.garden)
+    this.garden = simulate(JSON.parse(JSON.stringify(this.garden)))
+  }
+
+  @action
+  public setFlower = (flower: number) => {
+    this.selectedFlower = flower
+  }
+
+  @action
+  public startPlanting = () => {
+    this.isPlanting = true
+  }
+
+  @action
+  public stopPlanting = () => {
+    this.isPlanting = false
   }
 }
 
 export const gardenViewModel = new GardenViewModel()
+window.addEventListener('mouseup', () => gardenViewModel.stopPlanting())

@@ -5,6 +5,7 @@ import { gardenViewModel } from './GardenViewModel'
 import './styles/sass/garden.scss'
 import classNames from 'classnames'
 // import { countNeighbors } from './GameOfLife'
+// import { countNeighbors } from './GameOfLife'
 
 export const Garden = observer(() => {
   return <div className="garden">
@@ -23,14 +24,25 @@ const GardenRow = observer((props: { row: number }) => {
 const GardenTile = observer((props: { row: number, col: number }) => {
   const { row, col } = props
   const currentValue = gardenViewModel.garden[row][col]
-  const clickHandler = () => gardenViewModel.setTile(row, col, 1 - currentValue)
+  const clickHandler = () => {
+    gardenViewModel.startPlanting()
+    gardenViewModel.setTile(row, col)
+  }
+  const enterHandler = () => {
+    if (gardenViewModel.isPlanting) {
+      gardenViewModel.setTile(row, col)
+    }
+  }
+  // const n = countNeighbors(gardenViewModel.garden, row, col)
   return <div className="garden-tile">
     <div
       className={
         classNames('garden-tile-content', currentValue > 0 ? `flower-${currentValue}` : null)
       }
-      onClick={clickHandler}>
-      {/* {`${countNeighbors(gardenViewModel.garden, row, col)}`} */}
+      onMouseDown={clickHandler}
+      onMouseEnter={enterHandler}
+      >
+      {/* {`${n[1]},${n[2]},${n[3]}`} */}
     </div>
   </div>
 })
