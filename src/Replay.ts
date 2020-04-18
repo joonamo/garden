@@ -1,19 +1,15 @@
 import { GardenState, Inventory } from './GardenViewModel'
 
 export class ReplayEntry {
-  data: {
-    row: number
-    col: number
-    flower: number
-  }[] = []
+  data: number[][] = []
 
   public pushInput = (row: number, col: number, flower: number) => {
-    this.data.push({row, col, flower})
+    this.data.push([row, col, flower])
   }
 
   public applyData = (garden: GardenState, inventory: Inventory) => {
     this.data.forEach(element => {
-      const { row, col, flower } = element
+      const [ row, col, flower ] = element
       garden[row][col] = flower
       if (flower > 0) {
         inventory.useFlower(flower)

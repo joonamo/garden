@@ -2,6 +2,7 @@ import { observable, action } from 'mobx'
 import { simulate } from './GameOfLife'
 import moment, { Moment } from 'moment'
 import { ReplayEntry } from './Replay'
+import { appViewModel } from './AppViewModel'
 
 export const gardenSize = 15
 export const startMonth = 5
@@ -149,6 +150,7 @@ class GardenViewModel {
     if (this.day.format('D') !== '1') {
       window.setTimeout(this.frame, 100)
     } else if (this.day.format('M') === lastMonth) {
+      appViewModel.gameOver(this.doingReplay, this.scores.cumulative, this.replayData)
       this.doingReplay = false
       this.gameState = 'GameOver'
     } else if (this.doingReplay) {
