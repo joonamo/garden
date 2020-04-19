@@ -166,10 +166,10 @@ class GardenViewModel {
   @action
   public simulate = () => {
     this.setDate(this.day.add(1, 'day'))
-    this.scores.applyFrame()
     this.previousGarden = this.garden
     this.garden = simulate(JSON.parse(JSON.stringify(this.garden)))
     this.scores.updateFrame(this.garden, this.previousGarden)
+    this.scores.applyFrame()
     this.giveMoreSeeds(1, this.scores.dying1)
     this.giveMoreSeeds(2, this.scores.dying2)
     this.giveMoreSeeds(3, this.scores.dying3)
