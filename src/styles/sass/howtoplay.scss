@@ -1,0 +1,40 @@
+.how-to-play {
+  font-size: 3vmin;
+}
+
+.example-number {
+  font-size: 6vmin;
+  float: left;
+  padding-left: 2vmin;
+  padding-right: 3vmin;
+  font-style: italic;
+}
+
+.example-garden {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.scoring-example {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.scoring-example {
+  text-align: center;
+  font-size: 4vmin;
+}
+
+.no-border {
+  border: none;
+}
+
+.final-guide {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.shovel {
+  background-image: url("/assets/shovel.png");
+  background-size: contain;
+}

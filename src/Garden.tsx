@@ -6,9 +6,13 @@ import './styles/sass/garden.scss'
 import classNames from 'classnames'
 
 export const Garden = observer(() => {
-  return <div className="garden">
-    {gardenViewModel.garden.map((_, i) => <GardenRow row={i} key={`garden-row-${i}`} />)}
-  </div>
+  return <div className="garden-container">
+    <div className="garden">
+      {gardenViewModel.garden.map((_, i) => <GardenRow row={i} key={`garden-row-${i}`} />)}
+    </div>
+    {/* <div className="garden-overlay"> */}
+    {/* </div> */}
+  </div> 
 })
 
 const GardenRow = observer((props: { row: number }) => {
@@ -26,7 +30,8 @@ const GardenTile = observer((props: { row: number, col: number }) => {
     gardenViewModel.previousGarden,
     row,
     col)
-  const clickHandler = () => {
+  const clickHandler = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.preventDefault()
     gardenViewModel.startPlanting()
     gardenViewModel.setTile(row, col)
   }

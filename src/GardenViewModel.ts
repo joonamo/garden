@@ -5,10 +5,11 @@ import { ReplayEntry } from './Replay'
 import { appViewModel } from './AppViewModel'
 
 export const gardenSize = 15
-export const startMonth = 5
+export const startMonth = '5'
 export const lastMonth = '9'
 export type GardenState = number[][]
 export type GameState = 'Planning' | 'Simulating' | 'GameOver' | 'Replay'
+export const dyingMinimum = 10
 
 export const thisOrPrevious =
   (state: GardenState, prevState: GardenState, row: number, col: number) => {
@@ -112,7 +113,7 @@ class GardenViewModel {
     this.garden = this.helpfulArray.map(() => new Array<number>(gardenSize).fill(0))
     this.previousGarden = this.helpfulArray.map(() => new Array<number>(gardenSize).fill(0))
     this.scores = new Scores()
-    this.setDate(moment().set('month', startMonth).startOf('month'))
+    this.setDate(moment(`2020-${startMonth.padStart(2, '0')}-01`))
     this.inventory['1'] = 10
     this.inventory['2'] = 10
     this.inventory['3'] = 10
@@ -175,7 +176,7 @@ class GardenViewModel {
   }
 
   private giveMoreSeeds = (flower: number, dying: number) => {
-    if (dying > 10) {
+    if (dying >= dyingMinimum) {
       this.inventory[String(flower)] = this.inventory[String(flower)] + 1
     }
   }

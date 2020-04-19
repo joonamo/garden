@@ -1,5 +1,9 @@
 $gardenSize: 15;
 
+.garden-container {
+  position: relative;
+}
+
 .garden {
   display: grid;
 
@@ -50,4 +54,12 @@ $gardenSize: 15;
 
 .withering {
   opacity: 0.5;
+}
+
+.garden-overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
 }

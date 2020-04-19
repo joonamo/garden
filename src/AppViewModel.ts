@@ -6,7 +6,7 @@ import { postScore, ScoreEntry, getScores } from './highscoreClient'
 
 
 class AppViewModel {
-  @observable public playerName = 'test'
+  @observable public playerName = ''
   @observable public scoreboard: ScoreEntry[] = []
   @observable public reloadingScores = false
 

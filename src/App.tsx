@@ -6,6 +6,7 @@ import { Calendar } from './Calendar'
 import { Score } from './Score'
 import { BottomRow } from './BottomRow'
 import { ScoreBoard } from './ScoreBoard'
+import { HowToPlay } from './HowToPlay'
 
 @observer
 class App extends React.Component {
@@ -32,7 +33,12 @@ class App extends React.Component {
               </div>
             </div>
           </div>
+          <div className="box">
+            <HowToPlay />
+          </div>
         </div>
+
+        
       </section>
     </>
     )
