@@ -6,12 +6,13 @@ export const ActionButton = (props: {
   text: string
   disabled?: boolean
   loading?: boolean
+  styleOverride?: string
 }) => {
   return <div className="control">
     <button
       className={classNames(
         'button',
-        'is-danger',
+        props.styleOverride ?? 'is-danger',
         'scaling-button',
         'is-marginless',
         'is-fullwidth',

@@ -4,6 +4,11 @@ import { lastMonth, dyingMinimum } from './GardenViewModel'
 import './styles/sass/howtoplay.scss'
 import classNames from 'classnames'
 
+const showGame = () => {
+  const elmnt = document.getElementById('title')
+  elmnt?.scrollIntoView()
+}
+
 const ExampleFlower = (props: { flower: number }) => (
   <div className={classNames('garden-tile', 'no-border')}>
     <div className={`garden-tile-content flower-${props.flower}`} />
@@ -103,6 +108,22 @@ export const HowToPlay = () => <div className="how-to-play">
         The game ends in {moment(`2020-${lastMonth.padStart(2, '0')}-01`).format('MMMM')}.
         Good luck!
       </p>
+    </div>
+  </div>
+
+  <div className="field is-hidden-tablet is-fullwidth">
+    <div className="control">
+      <button
+        className={classNames(
+          'button',
+          'is-fullwidth',
+          'is-info',
+          'is-small',
+        )}
+        onClick={showGame}
+      >
+        Let&#39;s Play!
+        </button>
     </div>
   </div>
 </div>

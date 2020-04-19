@@ -3,6 +3,11 @@ import * as React from 'react'
 import { gardenViewModel } from './GardenViewModel'
 import classNames from 'classnames'
 
+const showHelp = () => {
+  const elmnt = document.getElementById('how-to-play')
+  elmnt?.scrollIntoView()
+}
+
 export const Tools = observer(() => {
   return <>
     <label className="label is-large has-text-light">Tool</label>
@@ -14,6 +19,22 @@ export const Tools = observer(() => {
       <FlowerSelector flower={1} key={`flower-selector-${1}`} />
       <FlowerSelector flower={2} key={`flower-selector-${2}`} />
       <FlowerSelector flower={3} key={`flower-selector-${3}`} />
+    </div>
+
+    <div className="field is-hidden-tablet is-fullwidth">
+      <div className="control">
+        <button
+          className={classNames(
+            'button',
+            'is-fullwidth',
+            'is-info',
+            'is-small',
+          )}
+          onClick={showHelp}
+        >
+          How to play?
+        </button>
+      </div>
     </div>
 
     <div className="field is-hidden-mobile">

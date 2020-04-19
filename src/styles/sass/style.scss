@@ -17,15 +17,11 @@ $fullhd-enabled: false;
   white-space: nowrap;
 }
 
-.score-entry .columns {
-  padding-right: 0;
-  padding-left: 12px;
-}
-
 .score-place {
   font-size: 1.5em;
   padding-top: 0;
   padding-bottom: 0;
+  padding-left: 6px;
   min-width: 34px;
 }
 
@@ -44,4 +40,10 @@ $fullhd-enabled: false;
 
 .in-memoriam p{
   text-align: center;
+  padding-bottom: 1em;
+}
+
+.in-memoriam a{
+  text-align: center;
+  color: $grey;
 }

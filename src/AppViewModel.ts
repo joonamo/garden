@@ -72,6 +72,8 @@ class AppViewModel {
     const score = this.scoreboard[idx]
     if (score) {
       gardenViewModel.doReplay(deserializeReplay(score.replay))
+      const elmnt = document.getElementById('game')
+      elmnt?.scrollIntoView()
     }
   }
 }

@@ -3,7 +3,7 @@ import * as React from 'react'
 import { gardenViewModel } from './GardenViewModel'
 
 export const Calendar = observer(() => ( 
-  <div className="columns">
+  <div className="columns is-mobile">
     <div className="column">
       <h4 className="title is-4 is-small">{gardenViewModel.dayString}</h4>
     </div>

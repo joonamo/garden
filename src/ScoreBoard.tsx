@@ -21,12 +21,12 @@ export const ScoreBoard = observer(() => {
 
 const Score = observer((props: {entry: ScoreEntry, place: number}) => {
   const {entry, place} = props
-  return <div className="box is-paddingless has-background-light score-entry">
+  return <div className="box has-background-white score-entry">
     <div className="columns is-mobile">
       <div className="column is-paddingless is-narrow score-place">
         <p>{place + 1}</p>
       </div>
-      <div className="column has-background-white score-data">
+      <div className="column score-data">
         <p>{entry.player}</p>
         <p>{entry.score.toLocaleString('en-GB')}</p>
         <div className="control play-tag">
