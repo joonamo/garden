@@ -96,16 +96,19 @@ class GardenViewModel {
   @observable public doingReplay = false
   private replayFrame = 0
   @observable public hasPlantedAny = false
+  public endDate: Moment
 
   constructor() {
     this.helpfulArray = new Array(gardenSize).map((_, i) => i)
     this.resetGarden()
+    this.endDate = moment(`2020-${lastMonth.padStart(2, '0')}-01`)
   }
 
   @action
   public setDate = (date: moment.MomentInput) => {
     this.day = moment(date)
-    this.dayString = this.day.format('dddd MMMM Do')
+    this.dayString = this.day.format('MMMM Do')
+
   }
 
   @action

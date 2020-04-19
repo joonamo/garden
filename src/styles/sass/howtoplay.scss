@@ -1,3 +1,9 @@
+@import "./garden.scss";
+
+.is-color-grass {
+  background-color: $grass;
+}
+
 .how-to-play {
   font-size: 3vmin;
 }

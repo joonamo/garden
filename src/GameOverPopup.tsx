@@ -10,11 +10,11 @@ export const GameOverPopup = observer(() => {
     <div className="dummy" />
     <div className="box">
       <h1 className="title is-1"> Game Over! </h1>
-      <p>Your score was {gardenViewModel.scores.cumulative}</p>
+      <p>Your score was {gardenViewModel.scores.cumulative.toLocaleString('en-GB')}</p>
       {
         appViewModel.submittingScore 
           ? <p>Submitting score...</p>
-          : <p>Your score placed {appViewModel.previousScoreStanding} in the leaderboards!</p>
+          : null
       }
       <ActionButton
         action={appViewModel.hideGameOverPopup}

@@ -1,8 +1,9 @@
 $gardenSize: 15;
+$grass: #C9E9A0;
 
 .garden-container {
   position: relative;
-  background-color: #C9E9A0;
+  background-color: $grass;
   padding: 10px;
   border-radius: 25px;
 }

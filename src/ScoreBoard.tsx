@@ -8,7 +8,8 @@ import { gardenViewModel } from './GardenViewModel'
 
 export const ScoreBoard = observer(() => {
   return <>
-    <label className="label is-large has-text-light" >High Scores</label>
+    <h4 className="title is-4 has-text-light">High Scores</h4>
+    <h6 className="subtitle is-6 has-text-light">Click for replay!</h6>
     {
       appViewModel.reloadingScores
         ? <p> Loading... </p>
@@ -43,7 +44,7 @@ const Score = observer((props: {entry: ScoreEntry, place: number}) => {
               gardenViewModel.doingReplay
             }
           >
-            Play
+            Show
           </button>
         </div>
       </div>

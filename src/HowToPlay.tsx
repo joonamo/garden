@@ -4,8 +4,8 @@ import { lastMonth, dyingMinimum } from './GardenViewModel'
 import './styles/sass/howtoplay.scss'
 import classNames from 'classnames'
 
-const ExampleFlower = (props: { flower: number, noBorder?: boolean }) => (
-  <div className={classNames('garden-tile', props.noBorder ? 'no-border' : null)}>
+const ExampleFlower = (props: { flower: number }) => (
+  <div className={classNames('garden-tile', 'no-border')}>
     <div className={`garden-tile-content flower-${props.flower}`} />
   </div>
 )
@@ -13,10 +13,10 @@ const ExampleFlower = (props: { flower: number, noBorder?: boolean }) => (
 export const HowToPlay = () => <div className="how-to-play">
   <h2 className="title is-2">How to Play</h2>
   <div className="columns is-mobile">
-    <div className="column is-two-fifths">
+    <div className="column is-two-fifths is-color-grass">
       <div className="example-garden">
         <div className="garden-row">
-          <div className="garden-tile" />
+          <div className="garden-tile no-border" />
           <ExampleFlower flower={1} />
           <ExampleFlower flower={1} />
         </div>
@@ -33,7 +33,7 @@ export const HowToPlay = () => <div className="how-to-play">
         <div className="garden-row">
           <ExampleFlower flower={3} />
           <ExampleFlower flower={3} />
-          <div className="garden-tile" />
+          <div className="garden-tile no-border" />
         </div>
       </div>
     </div>
@@ -54,7 +54,7 @@ export const HowToPlay = () => <div className="how-to-play">
   </div>
 
   <div className="columns is-mobile">
-    <div className="column has-background-light is-three-fiths">
+    <div className="column has-background-grey-lighter is-three-fiths">
       <p className="example-number">2</p>
       <p>
         You get scored every day by number or different flowers in your garden.
@@ -64,19 +64,19 @@ export const HowToPlay = () => <div className="how-to-play">
     <div className="column has-background-success is-two-fifths scoring-example">
       <div className="scoring-example huge-text">
         <div className="garden-row">
-          <ExampleFlower flower={1} noBorder={true}/>
+          <ExampleFlower flower={1} />
         </div>
         <div className="garden-row">
           <p>&times;</p>
         </div>
         <div className="garden-row">
-          <ExampleFlower flower={2} noBorder={true}/>
+          <ExampleFlower flower={2} />
         </div>
         <div className="garden-row">
           <p>&times;</p>
         </div>
         <div className="garden-row">
-          <ExampleFlower flower={3} noBorder={true}/>
+          <ExampleFlower flower={3} />
         </div>
       </div>
       <p>= Score</p>
@@ -84,10 +84,10 @@ export const HowToPlay = () => <div className="how-to-play">
   </div>
 
   <div className="columns is-mobile">
-    <div className="column is-two-fifths">
+    <div className="column is-two-fifths has-background-info">
       <div className="final-guide">
         <div className="garden-row">
-          <ExampleFlower flower={3} noBorder={true} />
+          <ExampleFlower flower={3}  />
         </div>
         <div className="garden-row">
           <div className="garden-tile no-border">
