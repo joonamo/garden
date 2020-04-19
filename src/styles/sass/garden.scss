@@ -2,6 +2,9 @@ $gardenSize: 15;
 
 .garden-container {
   position: relative;
+  background-color: #C9E9A0;
+  padding: 10px;
+  border-radius: 25px;
 }
 
 .garden {
@@ -16,10 +19,19 @@ $gardenSize: 15;
 }
 
 .garden-tile {
-  border: 1px;
-  border-style: solid;
-  border-color: black;
+  border-top: 1px solid;
+  border-left: 1px solid;
+  border-color: #006E2D;
   position: relative;
+  box-sizing: border-box;
+}
+
+.hide-border-top {
+  border-top: 1px solid transparent;
+}
+
+.hide-border-left {
+  border-left: 1px solid transparent;
 }
 
 .garden-tile:before{

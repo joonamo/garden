@@ -30,6 +30,7 @@ const GardenRow = observer((props: { row: number }) => {
     }
   </div>
 })
+
 const GardenTile = observer((props: { row: number, col: number }) => {
   const { row, col } = props
   const { value, isPrev } = thisOrPrevious(
@@ -38,7 +39,7 @@ const GardenTile = observer((props: { row: number, col: number }) => {
     row,
     col)
   const clickHandler = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent> | React.TouchEvent<HTMLDivElement>
+    e: React.MouseEvent<HTMLDivElement, MouseEvent> | React.TouchEvent<HTMLDivElement>,
   ) => {
     e.preventDefault()
     gardenViewModel.startPlanting()
@@ -50,7 +51,12 @@ const GardenTile = observer((props: { row: number, col: number }) => {
     }
   }
   // const n = countNeighbors(gardenViewModel.garden, row, col)
-  return <div className="garden-tile">
+  return <div className={classNames(
+    'garden-tile',
+    row === 0 ? 'hide-border-left' : null,
+    col === 0 ? 'hide-border-top' : null,
+    )}
+  >
     <div
       className={
         classNames(

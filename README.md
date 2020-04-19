@@ -1,2 +1,2 @@
 # garden
-Convay's Garden Life game
+Conway's Garden Life game

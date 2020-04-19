@@ -18,7 +18,7 @@ class App extends React.Component {
       <section className="section">
         <div className="container">
           <div >
-            <h1 className="title is-1"> Convay&#39;s Garden Life </h1>
+            <h1 className="title is-1"> Conway&#39;s Garden Life </h1>
             <div className="columns box is-paddingless has-background-info">
               <div className="column">
                 <Tools />
@@ -51,8 +51,10 @@ class App extends React.Component {
             <HowToPlay />
           </div>
         </div>
+      </section>
 
-
+      <section className="section in-memoriam has-text-grey-light">
+        <p>In memoriam John Conway 1937 - 2020</p>
       </section>
     </>
     )
