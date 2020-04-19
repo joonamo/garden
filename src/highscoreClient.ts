@@ -37,7 +37,7 @@ export const postScore = async (player: string, score: number, replay: serialize
 export const getScores = async (): Promise<ScoreEntry[]> => {
   const gameId = process.env.REACT_APP_GAME_ID as string
   const data = await (await fetch(
-    process.env.REACT_APP_SCORE_URL + `/game/${encodeURIComponent(gameId)}/scores`,
+    process.env.REACT_APP_SCORE_URL + `/game/${encodeURIComponent(gameId)}/scores?distinct=true`,
   )).json()
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return data.map((e: any) => ({
