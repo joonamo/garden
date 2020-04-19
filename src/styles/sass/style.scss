@@ -10,3 +10,35 @@ $fullhd-enabled: false;
 .flex-1 {
   flex: 1;
 }
+
+.score-entry p{
+  margin-left: 5px;
+  margin-right: 5px;
+  white-space: nowrap;
+}
+
+
+.score-entry .columns {
+  padding-right: 0;
+  padding-left: 12px;
+}
+
+.score-place {
+  font-size: 1.5em;
+  padding-top: 0;
+  padding-bottom: 0;
+  min-width: 34px;
+}
+
+.score-data {
+  position: relative;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+
+.play-tag {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

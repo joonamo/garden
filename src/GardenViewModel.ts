@@ -159,7 +159,10 @@ class GardenViewModel {
       this.doingReplay = false
       this.gameState = 'GameOver'
     } else if (this.doingReplay) {
-      this.replayData[this.replayFrame].applyData(this.garden, this.inventory)
+      const frame = this.replayData[this.replayFrame]
+      if (frame) {
+        frame.applyData(this.garden, this.inventory)
+      }
       this.replayFrame += 1
       window.setTimeout(this.frame, 2000)
     } else {

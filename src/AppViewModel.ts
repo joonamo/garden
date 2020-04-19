@@ -1,8 +1,9 @@
 /* eslint-disable no-restricted-globals */
 
 import { observable, action, computed } from 'mobx'
-import { ReplayEntry, serializeReplay } from './Replay'
+import { ReplayEntry, serializeReplay, deserializeReplay } from './Replay'
 import { postScore, ScoreEntry, getScores } from './highscoreClient'
+import { gardenViewModel } from './GardenViewModel'
 
 
 class AppViewModel {
@@ -55,7 +56,7 @@ class AppViewModel {
   }
 
   @action setPlayerName = (name: string) => {
-    this.playerName = name.slice(0, 10)
+    this.playerName = name
     localStorage.setItem('playerName', this.playerName)
   }
 
@@ -65,6 +66,13 @@ class AppViewModel {
 
   @action resetName = () => {
     this.playerName = ''
+  }
+
+  startReplayIdx = (idx: number) => {
+    const score = this.scoreboard[idx]
+    if (score) {
+      gardenViewModel.doReplay(deserializeReplay(score.replay))
+    }
   }
 }
 

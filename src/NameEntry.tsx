@@ -13,12 +13,12 @@ export const NameEntry = () => {
       <label className="label is-large">Enter your name</label>
       <div className="field has-addons">
         <div className="control">
-          <input className="input" type="text" placeholder="..." ref={textRef} />
+          <input className="input" type="text" maxLength={15} placeholder="..." ref={textRef} />
         </div>
         <div className="control" onClick={onClick}>
-          <a className="button is-info">
+          <button className="button is-info">
             OK!
-          </a>
+          </button>
         </div>
       </div>
     </div>

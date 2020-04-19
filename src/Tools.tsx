@@ -6,7 +6,17 @@ import classNames from 'classnames'
 export const Tools = observer(() => {
   return <>
     <label className="label is-large has-text-light">Tool</label>
-    <div className="field">
+    <div className="field has-addons is-hidden-tablet is-fullwidth">
+      <FlowerSelector
+        flower={0}
+        image="assets/shovel.png"
+        key={`flower-selector-${0}`} />
+      <FlowerSelector flower={1} key={`flower-selector-${1}`} />
+      <FlowerSelector flower={2} key={`flower-selector-${2}`} />
+      <FlowerSelector flower={3} key={`flower-selector-${3}`} />
+    </div>
+
+    <div className="field is-hidden-mobile">
       <FlowerSelector
         flower={0}
         image="assets/shovel.png"
