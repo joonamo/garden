@@ -11,9 +11,11 @@ $fullhd-enabled: false;
   flex: 1;
 }
 
+.score-entry {
+  margin-bottom: 0.5rem !important;
+}
+
 .score-entry p{
-  margin-left: 5px;
-  margin-right: 5px;
   white-space: nowrap;
 }
 
@@ -30,12 +32,16 @@ $fullhd-enabled: false;
   padding-top: 0;
   padding-bottom: 0;
   overflow: hidden;
+  margin-bottom: 0;
 }
 
 .play-tag {
   position: absolute;
   top: 0;
   right: 0;
+}
+.play-tag button {
+  padding: 5px;
 }
 
 .in-memoriam p{
