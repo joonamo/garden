@@ -9,18 +9,24 @@ import { gardenViewModel } from './GardenViewModel'
 export const ScoreBoard = observer(() => {
   return <>
     <h4 className="title is-4 has-text-light">High Scores</h4>
-    <h6 className="subtitle is-6 has-text-light">Click for replay!</h6>
+    <h6 className="subtitle is-6 has-text-light">
+      {
+        appViewModel.reloadingScores
+          ? 'Loading...'
+          : 'Click for replay!'
+      }
+    </h6>
     {
-      appViewModel.reloadingScores
-        ? <p> Loading... </p>
-        : appViewModel.scoreboard.map((s, i) =>
+      appViewModel.goodToGo
+        ? appViewModel.scoreboard.map((s, i) =>
           <Score entry={s} place={i} key={`score-${i}`} />)
+        : null
     }
   </>
 })
 
-const Score = observer((props: {entry: ScoreEntry, place: number}) => {
-  const {entry, place} = props
+const Score = observer((props: { entry: ScoreEntry, place: number }) => {
+  const { entry, place } = props
   return <div className="box has-background-white score-entry">
     <div className="columns is-mobile">
       <div className="column is-paddingless is-narrow score-place">
@@ -32,12 +38,12 @@ const Score = observer((props: {entry: ScoreEntry, place: number}) => {
         <div className="control play-tag">
           <button
             className=
-              {classNames(
-                'button',
-                'is-marginless',
-                'is-primary',
-                'is-small',
-              )}
+            {classNames(
+              'button',
+              'is-marginless',
+              'is-primary',
+              'is-small',
+            )}
             onClick={() => appViewModel.startReplayIdx(place)}
             disabled={
               gardenViewModel.gameState === 'Simulating' ||
