@@ -1,7 +1,12 @@
 import * as React from 'react'
 import classNames from 'classnames'
 
-export const ActionButton = (props: { action: () => void, text: string, disabled?: boolean }) => {
+export const ActionButton = (props: {
+  action: () => void
+  text: string
+  disabled?: boolean
+  loading?: boolean
+}) => {
   return <div className="control">
     <button
       className={classNames(
@@ -10,7 +15,7 @@ export const ActionButton = (props: { action: () => void, text: string, disabled
         'scaling-button',
         'is-marginless',
         'is-fullwidth',
-        props.disabled ? 'is-loading' : null)}
+        props.loading ? 'is-loading' : null)}
       onClick={props.action}
       disabled={props.disabled}>
       {props.text}

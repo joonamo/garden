@@ -7,6 +7,8 @@ import { Score } from './Score'
 import { BottomRow } from './BottomRow'
 import { ScoreBoard } from './ScoreBoard'
 import { HowToPlay } from './HowToPlay'
+import { appViewModel } from './AppViewModel'
+import { NameEntry } from './NameEntry'
 
 @observer
 class App extends React.Component {
@@ -23,7 +25,11 @@ class App extends React.Component {
 
               <div className="column has-background-light is-three-fifths">
                 <Score />
-                <Garden />
+                <Garden
+                  overlay={
+                    !appViewModel.goodToGo ? <NameEntry /> : undefined
+                  }
+                />
                 <Calendar />
                 <BottomRow />
               </div>

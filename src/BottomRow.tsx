@@ -2,6 +2,7 @@ import { observer } from 'mobx-react'
 import * as React from 'react'
 import { gardenViewModel } from './GardenViewModel'
 import { ActionButton } from './ActionButton'
+import { appViewModel } from './AppViewModel'
 
 export const BottomRow = observer(() => {
   const { gameState } = gardenViewModel
@@ -14,7 +15,8 @@ export const BottomRow = observer(() => {
             : gardenViewModel.resetGarden
         }
         text={gameState === 'Planning' ? 'Ready!' : 'New Game'}
-        disabled={gameState === 'Simulating'}
+        disabled={!appViewModel.goodToGo || gameState === 'Simulating'}
+        loading={gameState === 'Simulating'}
       />
     </div>
     {

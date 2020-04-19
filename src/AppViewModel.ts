@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-globals */
 
-import { observable, action } from 'mobx'
+import { observable, action, computed } from 'mobx'
 import { ReplayEntry, serializeReplay } from './Replay'
 import { postScore, ScoreEntry, getScores } from './highscoreClient'
 
@@ -22,6 +22,10 @@ class AppViewModel {
     await this.reloadScores()
   }
 
+  @computed get goodToGo() {
+    return this.playerName.length > 0
+  }
+
   public reloadScores = async () => {
     this.reloadingScores = true
     try {
@@ -31,6 +35,10 @@ class AppViewModel {
     } finally {
       this.reloadingScores = false
     }
+  }
+
+  @action setPlayerName = (name: string) => {
+    this.playerName = name.slice(0, 10)
   }
 }
 

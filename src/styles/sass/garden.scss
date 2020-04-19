@@ -63,3 +63,19 @@ $gardenSize: 15;
   bottom: 0px;
   right: 0px;
 }
+
+.garden-overlay-content {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dummy {
+  flex: 1;
+}

@@ -5,13 +5,20 @@ import { gardenViewModel, thisOrPrevious } from './GardenViewModel'
 import './styles/sass/garden.scss'
 import classNames from 'classnames'
 
-export const Garden = observer(() => {
+export const Garden = observer((props: { overlay?: React.ReactNode | undefined}) => {
+  const { overlay } = props
   return <div className="garden-container">
     <div className="garden">
       {gardenViewModel.garden.map((_, i) => <GardenRow row={i} key={`garden-row-${i}`} />)}
     </div>
-    {/* <div className="garden-overlay"> */}
-    {/* </div> */}
+    {
+      overlay && 
+      <div className="garden-overlay">
+        <div className="garden-overlay-content">
+          {overlay}
+        </div>
+      </div>
+    }
   </div> 
 })
 
