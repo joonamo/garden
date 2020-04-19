@@ -7,25 +7,37 @@ import { appViewModel } from './AppViewModel'
 export const BottomRow = observer(() => {
   const { gameState } = gardenViewModel
   return <div className="columns">
-    <div className="column">
-      <ActionButton
-        action={
-          gameState === 'Planning'
-            ? gardenViewModel.startSimulation
-            : gardenViewModel.resetGarden
-        }
-        text={gameState === 'Planning' ? 'Ready!' : 'New Game'}
-        disabled={!appViewModel.goodToGo || gameState === 'Simulating'}
-        loading={gameState === 'Simulating'}
-      />
-    </div>
     {
-      gameState !== 'GameOver' ? null : <div className="column">
-        <ActionButton
-          action={gardenViewModel.playStoredReplay}
-          text={'Replay'}
-        />
-      </div>
+      gameState !== 'GameOver' ? 
+        <div className="column">
+          <ActionButton
+            action={gardenViewModel.startSimulation}
+            text={
+              !gardenViewModel.hasPlantedAny 
+                ? 'Plant some flowers!'
+                : 'Ready!'}
+            disabled={
+              !appViewModel.goodToGo ||
+              gameState === 'Simulating' ||
+              !gardenViewModel.hasPlantedAny}
+            loading={gameState === 'Simulating'}
+          />
+        </div> 
+      :
+        <>
+          <div className="column">
+            <ActionButton
+              action={gardenViewModel.resetGarden}
+              text={'New Game'}
+            />
+          </div>
+          <div className="column">
+            <ActionButton
+              action={gardenViewModel.playStoredReplay}
+              text={'Replay'}
+            />
+          </div>
+        </>
     }
   </div>
 })

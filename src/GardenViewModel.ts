@@ -95,6 +95,7 @@ class GardenViewModel {
   private currentFrameReplayData: ReplayEntry = new ReplayEntry()
   @observable public doingReplay = false
   private replayFrame = 0
+  @observable public hasPlantedAny = false
 
   constructor() {
     this.helpfulArray = new Array(gardenSize).map((_, i) => i)
@@ -120,6 +121,8 @@ class GardenViewModel {
     this.replayData = []
     this.currentFrameReplayData = new ReplayEntry()
     this.replayFrame = 0
+    this.hasPlantedAny = false
+    appViewModel.startGame()
   }
 
   @action
@@ -132,6 +135,7 @@ class GardenViewModel {
       this.garden[row][col] = this.selectedFlower
       this.scores.updateFrame(this.garden, this.previousGarden)
       this.currentFrameReplayData.pushInput(row, col, this.selectedFlower)
+      this.hasPlantedAny = true
     }
   }
 

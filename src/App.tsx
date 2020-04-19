@@ -9,6 +9,7 @@ import { ScoreBoard } from './ScoreBoard'
 import { HowToPlay } from './HowToPlay'
 import { appViewModel } from './AppViewModel'
 import { NameEntry } from './NameEntry'
+import { GameOverPopup } from './GameOverPopup'
 
 @observer
 class App extends React.Component {
@@ -18,8 +19,8 @@ class App extends React.Component {
         <div className="container">
           <div >
             <h1 className="title is-1"> Convay&#39;s Garden Life </h1>
-            <div className="columns box is-paddingless">
-              <div className="column has-background-info">
+            <div className="columns box is-paddingless has-background-info">
+              <div className="column">
                 <Tools />
               </div>
 
@@ -27,24 +28,31 @@ class App extends React.Component {
                 <Score />
                 <Garden
                   overlay={
-                    !appViewModel.goodToGo ? <NameEntry /> : undefined
+                    !appViewModel.goodToGo ? <NameEntry />
+                      : appViewModel.showingGameOverModal ? <GameOverPopup />
+                        : undefined
                   }
                 />
                 <Calendar />
                 <BottomRow />
               </div>
 
-              <div className="column has-background-success">
+              <div className="column">
                 <ScoreBoard />
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
           <div className="box">
             <HowToPlay />
           </div>
         </div>
 
-        
+
       </section>
     </>
     )

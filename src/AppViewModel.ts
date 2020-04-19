@@ -9,17 +9,34 @@ class AppViewModel {
   @observable public playerName = ''
   @observable public scoreboard: ScoreEntry[] = []
   @observable public reloadingScores = false
+  @observable public submittingScore = false
+  @observable public previousScoreStanding = 0
+  @observable public showingGameOverModal = false
 
   constructor() {
     this.reloadScores()
+    this.playerName = localStorage.getItem('playerName') ?? ''
   }
 
   @action
   public gameOver = async (wasReplay: boolean, score: number, replay: ReplayEntry[]) => {
     if (!wasReplay) {
-      await postScore(this.playerName, score, serializeReplay(replay))
+      this.submittingScore = true
+      this.showingGameOverModal = true
+      try {
+        await postScore(this.playerName, score, serializeReplay(replay))
+      } catch (e) {
+        console.log('error submitting score', e)
+      } finally {
+        this.submittingScore = false
+      }
     }
     await this.reloadScores()
+  }
+
+  @action
+  public startGame = () => {
+    this.hideGameOverPopup()
   }
 
   @computed get goodToGo() {
@@ -39,6 +56,15 @@ class AppViewModel {
 
   @action setPlayerName = (name: string) => {
     this.playerName = name.slice(0, 10)
+    localStorage.setItem('playerName', this.playerName)
+  }
+
+  @action hideGameOverPopup = () => {
+    this.showingGameOverModal = false
+  }
+
+  @action resetName = () => {
+    this.playerName = ''
   }
 }
 
