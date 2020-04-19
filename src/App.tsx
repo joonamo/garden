@@ -57,7 +57,7 @@ class App extends React.Component {
         <p>Created by{' '}
           <a href="https://joonamo.com">Joonamo</a>
           {' '}for{' '}
-          <a href="https://ldjam.com/events/ludum-dare/46">Ludum Dare 46</a></p>
+          <a href="https://ldjam.com/events/ludum-dare/46/conways-garden-life">Ludum Dare 46</a></p>
         <p>In memoriam John Conway 1937 - 2020</p>
       </section>
     </>
