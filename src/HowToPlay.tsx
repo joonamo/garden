@@ -46,7 +46,7 @@ export const HowToPlay = () => <div className="how-to-play">
       <p className="example-number">1</p>
       <p>
         Plant flowers in your garden. Hit <em>Ready!</em> when done and your flowers
-        will start flourishing or perishing according to rules of{' '}
+        will start to flourish or perish according to rules of{' '}
         <a 
           href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"
           target="_blank"
