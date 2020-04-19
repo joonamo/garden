@@ -41,7 +41,7 @@ const FlowerSelector = observer((props: { flower: number, image?: string }) => {
         )}
       onClick={onClick}>
       <span className="icon is-left">
-        <img src={image ?? `assets/flower-${flower}.png`} />
+        <img src={image ?? `assets/flower-${flower}.png`} alt={`Plant flower ${flower}`} />
       </span>
       <span>
         {gardenViewModel.inventory[String(flower)]}

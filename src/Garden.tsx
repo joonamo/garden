@@ -37,7 +37,9 @@ const GardenTile = observer((props: { row: number, col: number }) => {
     gardenViewModel.previousGarden,
     row,
     col)
-  const clickHandler = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const clickHandler = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent> | React.TouchEvent<HTMLDivElement>
+  ) => {
     e.preventDefault()
     gardenViewModel.startPlanting()
     gardenViewModel.setTile(row, col)
@@ -59,6 +61,7 @@ const GardenTile = observer((props: { row: number, col: number }) => {
       }
       onMouseDown={clickHandler}
       onMouseEnter={enterHandler}
+      onTouchStart={clickHandler}
       >
       {/* {`${n[1]},${n[2]},${n[3]}`} */}
     </div>
